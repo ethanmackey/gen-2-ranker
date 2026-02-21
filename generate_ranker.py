@@ -127,6 +127,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             overflow: hidden;
             position: fixed;
             width: 100%;
+            background: #667eea;
         }
         
         body {
@@ -237,12 +238,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         }
         
         .pokemon-card img {
-            max-height: 8vh;
+            max-height: 7vh;
             max-width: 100%;
             width: auto;
             height: auto;
             image-rendering: pixelated;
-            margin-top: 0.5vh;
+            margin-top: 0.3vh;
         }
         
         .pokemon-card .name {
