@@ -149,12 +149,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             margin-bottom: 0.2vh;
             text-align: center;
-            font-size: 2.5vh;
+            font-size: 3vh;
         }
         
         .progress {
             color: white;
-            font-size: 1.4vh;
+            font-size: 1.8vh;
             margin-bottom: 0.2vh;
         }
         
@@ -178,20 +178,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             color: white;
             text-align: center;
             margin-bottom: 0.3vh;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             padding: 0 5px;
         }
         
         .selection-count {
             color: #DDA0DD;
-            font-size: 2vh;
+            font-size: 2.4vh;
             font-weight: bold;
             margin-bottom: 0.2vh;
         }
         
         .hint {
             color: rgba(255,255,255,0.5);
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             margin-bottom: 0.5vh;
             font-style: italic;
         }
@@ -263,7 +263,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .pokemon-card .name {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             font-weight: bold;
             line-height: 1;
             margin-top: 0.5vh;
@@ -273,7 +273,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .pokemon-card .species {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -401,7 +401,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .battle-card .name {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             font-weight: bold;
             line-height: 1;
             margin-top: 0.5vh;
@@ -411,13 +411,13 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .battle-card .number {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
         
         .battle-card .desc {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -510,6 +510,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             flex: 1;
             padding: 1vh;
             max-width: 50vh;
+            grid-template-rows: auto auto auto;
+            align-content: center;
         }
         
         .rank-card {
@@ -523,6 +525,17 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             justify-content: flex-end;
             overflow: hidden;
             box-shadow: 0 0.3vh 1vh rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .rank-card .rank-number {
+            position: absolute;
+            top: 0.5vh;
+            left: 0.5vh;
+            color: white;
+            font-size: 2vh;
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
         
         .rank-card .sprite-area {
@@ -551,7 +564,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         .rank-card .name {
             color: white;
             font-weight: bold;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             line-height: 1;
             margin-top: 0.5vh;
             margin-bottom: 0.3vh;
@@ -560,7 +573,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         .rank-card .species {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -685,7 +698,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         <div class="progress-fill" id="progress-fill"></div>
     </div>
     <p class="selection-count" id="selection-count">0 favorites selected</p>
-    <p class="hint" id="hint">Tip: The more selective you are, the fewer comparisons later!</p>
+    <p class="hint" id="hint">Tip: The more selective you are,<br>the fewer comparisons later!</p>
     
     <div class="batch-container" id="batch"></div>
     
@@ -722,11 +735,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
     </div>
     
     <div class="btn-row" id="undo-row" style="display: none;">
-        <button class="undo-btn" id="undo-btn" onclick="undoChoice()" disabled>↩ Undo</button>
+        <button class="undo-btn" id="undo-btn" onclick="undoChoice()" disabled>Undo</button>
     </div>
     
     <div id="results">
-        <h1 style="font-size: 2.5vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
+        <h1 style="font-size: 3vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
         <h2>Your Top Gen 2 Pokemon!</h2>
         <div class="top-pokemon" id="top-pokemon"></div>
         <div class="results-buttons">
@@ -736,7 +749,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
     </div>
     
     <div class="full-rankings" id="full-rankings">
-        <h1 style="font-size: 2.5vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
+        <h1 style="font-size: 3vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
         <h3>Full Rankings</h3>
         <div class="full-rankings-list" id="full-list"></div>
         <div class="results-buttons">
@@ -1060,6 +1073,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 const p = sorted[i];
                 topContainer.innerHTML += `
                     <div class="rank-card" style="background: ${getCardBgStyle(p.types)}">
+                        <span class="rank-number">${i + 1}</span>
                         <div class="sprite-area">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${p.id}.gif" alt="${p.name}">
                         </div>

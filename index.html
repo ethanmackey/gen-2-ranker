@@ -40,12 +40,12 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             margin-bottom: 0.2vh;
             text-align: center;
-            font-size: 2.5vh;
+            font-size: 3vh;
         }
         
         .progress {
             color: white;
-            font-size: 1.4vh;
+            font-size: 1.8vh;
             margin-bottom: 0.2vh;
         }
         
@@ -69,20 +69,20 @@
             color: white;
             text-align: center;
             margin-bottom: 0.3vh;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             padding: 0 5px;
         }
         
         .selection-count {
             color: #DDA0DD;
-            font-size: 2vh;
+            font-size: 2.4vh;
             font-weight: bold;
             margin-bottom: 0.2vh;
         }
         
         .hint {
             color: rgba(255,255,255,0.5);
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             margin-bottom: 0.5vh;
             font-style: italic;
         }
@@ -154,7 +154,7 @@
         
         .pokemon-card .name {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             font-weight: bold;
             line-height: 1;
             margin-top: 0.5vh;
@@ -164,7 +164,7 @@
         
         .pokemon-card .species {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -292,7 +292,7 @@
         
         .battle-card .name {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             font-weight: bold;
             line-height: 1;
             margin-top: 0.5vh;
@@ -302,13 +302,13 @@
         
         .battle-card .number {
             color: white;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
         
         .battle-card .desc {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -401,6 +401,8 @@
             flex: 1;
             padding: 1vh;
             max-width: 50vh;
+            grid-template-rows: auto auto auto;
+            align-content: center;
         }
         
         .rank-card {
@@ -442,7 +444,7 @@
         .rank-card .name {
             color: white;
             font-weight: bold;
-            font-size: 1.8vh;
+            font-size: 2.2vh;
             line-height: 1;
             margin-top: 0.5vh;
             margin-bottom: 0.3vh;
@@ -451,7 +453,7 @@
         
         .rank-card .species {
             color: white;
-            font-size: 1.5vh;
+            font-size: 1.8vh;
             font-style: italic;
             line-height: 1;
             margin-top: 0.4vh;
@@ -576,7 +578,7 @@
         <div class="progress-fill" id="progress-fill"></div>
     </div>
     <p class="selection-count" id="selection-count">0 favorites selected</p>
-    <p class="hint" id="hint">Tip: The more selective you are, the fewer comparisons later!</p>
+    <p class="hint" id="hint">Tip: The more selective you are,<br>the fewer comparisons later!</p>
     
     <div class="batch-container" id="batch"></div>
     
@@ -613,11 +615,11 @@
     </div>
     
     <div class="btn-row" id="undo-row" style="display: none;">
-        <button class="undo-btn" id="undo-btn" onclick="undoChoice()" disabled>↩ Undo</button>
+        <button class="undo-btn" id="undo-btn" onclick="undoChoice()" disabled>Undo</button>
     </div>
     
     <div id="results">
-        <h1 style="font-size: 2.5vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
+        <h1 style="font-size: 3vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
         <h2>Your Top Gen 2 Pokemon!</h2>
         <div class="top-pokemon" id="top-pokemon"></div>
         <div class="results-buttons">
@@ -627,7 +629,7 @@
     </div>
     
     <div class="full-rankings" id="full-rankings">
-        <h1 style="font-size: 2.5vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
+        <h1 style="font-size: 3vh; margin-bottom: 0.5vh;">Gen 2 Pokemon Ranker</h1>
         <h3>Full Rankings</h3>
         <div class="full-rankings-list" id="full-list"></div>
         <div class="results-buttons">
