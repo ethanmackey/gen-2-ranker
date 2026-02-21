@@ -199,12 +199,13 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         .batch-container {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-rows: auto auto;
             gap: 0.5vh;
             width: 100%;
             max-width: 50vh;
             flex: 1;
             min-height: 0;
+            align-content: center;
         }
         
         .pokemon-card {
@@ -596,7 +597,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         .full-rankings h3 {
             margin-bottom: 8px;
             color: white;
-            font-size: 1.1em;
+            font-size: 2vh;
             flex-shrink: 0;
         }
         
@@ -749,7 +750,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         const pokemon = POKEMON_DATA_PLACEHOLDER;
         
         // State
-        const BATCH_SIZE = 6;
+        const BATCH_SIZE = 4;
         let allPokemon = [];
         let favorites = [];
         let batchSelections = []; // Store selections per batch for undo
