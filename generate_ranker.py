@@ -703,7 +703,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
     <div class="batch-container" id="batch"></div>
     
     <div class="btn-row" id="selection-btns">
-        <button class="back-btn" id="back-btn" onclick="prevBatch()" disabled>← Back</button>
+        <button class="back-btn" id="back-btn" onclick="prevBatch()" style="display: none;">← Back</button>
         <button class="next-btn" id="next-btn" onclick="nextBatch()">Next →</button>
     </div>
     
@@ -885,7 +885,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             const nextBtn = document.getElementById('next-btn');
             const isLast = batchIndex >= totalBatches - 1;
             
-            backBtn.disabled = batchIndex === 0;
+            backBtn.style.display = batchIndex === 0 ? 'none' : 'block';
             nextBtn.textContent = isLast ? 'Start Ranking! →' : 'Next →';
         }
         
@@ -963,33 +963,14 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             comparisons = [];
             const n = favorites.length;
             
-            if (n <= 8) {
-                for (let i = 0; i < n; i++) {
-                    for (let j = i + 1; j < n; j++) {
-                        comparisons.push([favorites[i], favorites[j]]);
-                    }
-                }
-            } else {
-                const numRounds = Math.ceil(Math.log2(n)) + 2;
-                
-                for (let round = 0; round < numRounds; round++) {
-                    let shuffled = [...favorites].sort(() => Math.random() - 0.5);
-                    for (let i = 0; i < shuffled.length - 1; i += 2) {
-                        comparisons.push([shuffled[i], shuffled[i + 1]]);
-                    }
-                }
-                
-                const extraComparisons = Math.min(n * 2, 30);
-                for (let i = 0; i < extraComparisons; i++) {
-                    const idx1 = Math.floor(Math.random() * n);
-                    let idx2 = Math.floor(Math.random() * n);
-                    while (idx2 === idx1) {
-                        idx2 = Math.floor(Math.random() * n);
-                    }
-                    comparisons.push([favorites[idx1], favorites[idx2]]);
+            // Generate all n choose 2 pairs (every Pokemon vs every other Pokemon once)
+            for (let i = 0; i < n; i++) {
+                for (let j = i + 1; j < n; j++) {
+                    comparisons.push([favorites[i], favorites[j]]);
                 }
             }
             
+            // Shuffle the order
             comparisons.sort(() => Math.random() - 0.5);
         }
         
@@ -1073,7 +1054,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 const p = sorted[i];
                 topContainer.innerHTML += `
                     <div class="rank-card" style="background: ${getCardBgStyle(p.types)}">
-                        <span class="rank-number">${i + 1}</span>
+                        <span class="rank-number">${i + 1}.</span>
                         <div class="sprite-area">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${p.id}.gif" alt="${p.name}">
                         </div>
